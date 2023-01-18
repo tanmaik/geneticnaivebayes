@@ -1,4 +1,4 @@
-from genetic import fitness # more imports added later
+from genetic import fitness, rank_population, generate_random_weights, generate_initial_population# more imports added later
 
 
 
