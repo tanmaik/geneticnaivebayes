@@ -9,8 +9,18 @@
 # rank_population()
 # breed(mom, dad)
 
-   
+def fitness(weights):
+    return
 
-    
+def generate_random_weights():
+    return
 
+def generate_initial_population():
+    return
+
+def rank_population():
+    return
+
+def breed(mom, dad):
+    return
 
