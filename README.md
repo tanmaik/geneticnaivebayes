@@ -24,13 +24,28 @@ Approved
 
 ## Features Key (for categorical data)
 
+### Gender
+
+0. Female
+1. Male
+
+### Married
+
+0. Single/Divorced
+1. Married
+
+### BankCustomer
+
+0. No account
+1. Has account
+
 ### Industry
 
 1. Industrials
 2. Materials
-3. Communication
+3. CommunicationServices
 4. Transport
-5. InformationTecnology
+5. InformationTechnology
 6. Financials
 7. Energy
 8. Real Estate
@@ -49,8 +64,28 @@ Approved
 4. Latino
 5. Other
 
+### Prior Default
+
+0. No prior default
+1. Prior default
+
+### Employed
+
+0. Not employed
+1. Employed
+
+### Driver's License
+
+0. No license
+1. License
+
 ### Citizen
 
 1. ByBirth
 2. ByOtherMeans
 3. Temporary
+
+### Approved
+
+0. Not approved
+1. Approved

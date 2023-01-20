@@ -1,6 +1,7 @@
 import numpy as np
-from tqdm import tqdm 
-from sklearn.model_selection import train_test_split
+# from tqdm import tqdm 
+# from sklearn.model_selection import train_test_split
+import sys
 
 def discretize(X):
     X_discretized = X.copy()
@@ -10,8 +11,13 @@ def discretize(X):
             X_discretized[X[:, col] <= threshold, col] = class_label
     return X_discretized.astype(int)
 
+X = np.loadtxt(open("credit_approved.csv", "rb"), delimiter=",", usecols=range(14), dtype=float)
+
 
 Xd = discretize(X)
+for row in Xd:
+    print(row)
+sys.exit()
 
 Xd_train, Xd_test, y_train, y_test = train_test_split(Xd, y, random_state = 0, stratify = y, test_size=0.3)
 
