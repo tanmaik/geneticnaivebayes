@@ -1,14 +1,6 @@
-from genetic import fitness, rank_population, generate_random_weights, generate_initial_population# more imports added later
-
-
-
-from sklearn.datasets import load_iris
 import numpy as np
 from tqdm import tqdm 
 from sklearn.model_selection import train_test_split
-
-X, y = load_iris(return_X_y = True)
-
 
 def discretize(X):
     X_discretized = X.copy()
@@ -17,6 +9,7 @@ def discretize(X):
             threshold = np.quantile(X[:, col], q=q)
             X_discretized[X[:, col] <= threshold, col] = class_label
     return X_discretized.astype(int)
+
 
 Xd = discretize(X)
 
