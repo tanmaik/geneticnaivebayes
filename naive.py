@@ -57,7 +57,7 @@ def naive(weights):
             accumulator = 1
             for attribute_value in range(len(testing_now)):
                 try:
-                    accumulator = accumulator * probabilities[num][attribute_value][testing_now[attribute_value]]
+                    accumulator = accumulator * (probabilities[num][attribute_value][testing_now[attribute_value]]**weights[attribute_value])
                 except:
                     print(num)
                     print(attribute_value)
