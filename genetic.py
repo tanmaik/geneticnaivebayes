@@ -8,7 +8,7 @@ from tqdm import tqdm
 
 
 POPULATION_SIZE = 100
-NUM_CLONES = 10
+NUM_CLONES =0
 MUTATION_RATE = .2
 TOURNAMENT_SIZE = 20
 TOURNAMENT_WIN_PROBABILITY = .75
@@ -34,7 +34,7 @@ def init_population():
 
 def rank_population(population):
     strat_to_fitness = dict()
-    for index, strategy in tqdm(enumerate(population)):
+    for index, strategy in enumerate(population):
         strat_to_fitness[index] = fitness(strategy)
         ranked = sorted(strat_to_fitness.items(), key = lambda kv : (kv[1], kv[0]))
     return ranked[::-1]
@@ -78,10 +78,10 @@ def create_child(current_population):
             parent2 = popCurrent[element[0]]
             break
     if parent1 == 0:
-        print("couldn't find parent 1")
+        # print("couldn't find parent 1")
         parent1 = popCurrent[tourney1[0][0]]
     if parent2 == 0:
-        print("couldn't find parent 2")
+        # print("couldn't find parent 2")
         parent2 = popCurrent[tourney2[0][0]]
     child = breed(parent1, parent2)
     if random() < MUTATION_RATE:
@@ -91,6 +91,7 @@ def create_child(current_population):
 
 popZero = init_population()
 popCurrent = popZero
+
 for x in range(NUM_GENERATIONS):
     newPop = []
     rankedPop = rank_population(popCurrent)
@@ -100,7 +101,10 @@ for x in range(NUM_GENERATIONS):
         child = create_child(rankedPop)
         if child not in newPop:
             newPop.append(child)
+        # print(newPop)
     popCurrent = newPop.copy()
     newPop = []
     print("Generation " + str(x) + " complete")
-    print("Best strategy accuracy: " + str(fitness(popCurrent[0])))
+    rankedPop = rank_population(popCurrent)
+    best_strategy = rankedPop[0][0]
+    print("Best strategy accuracy: " + str(fitness(popCurrent[best_strategy])))
