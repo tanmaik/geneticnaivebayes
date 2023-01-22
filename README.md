@@ -1,4 +1,4 @@
-# Genetic Naive Bayes
+# Credit Approval Ratings dataset legend
 
 ## Headers
 
