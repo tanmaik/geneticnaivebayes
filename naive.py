@@ -17,16 +17,16 @@ def naive(weights):
         num_observations[num] = list(y_train).count(num)
 
 
-    print(f"\n# in each class value bucket: {num_observations}")
+    # print(f"\n# in each class value bucket: {num_observations}")
     training_num_observations = sum(num_observations.values())
-    print(f"# of total instances in the training set: {training_num_observations}\n")
+    # print(f"# of total instances in the training set: {training_num_observations}\n")
     probabilities = dict()
 
 
-    print("Training...")
-    print("Calculating all probabilities to use during testing...")
+    # print("Training...")
+    # print("Calculating all probabilities to use during testing...")
 
-    for num in tqdm(set(y)): # num = equal a class value 
+    for num in set(y): # num = equal a class value 
         probabilities[num] = dict() # establishes a dictionary for each class value 
         for i in range(len(X[0])): # now looping through each of the attribute / features 
             probabilities[num][i] = dict() # establishes a dictionary for each attribute
@@ -41,11 +41,11 @@ def naive(weights):
             probabilities[num][i] = {k: v / num_observations[num] for k, v in probabilities[num][i].items()} # now we divide the value of the attribute by the number of observations of that class value
 
 
-    print("Probabilities calculated!\n")
+    # print("Probabilities calculated!\n")
 
 
-    print(f"\n# of test observations: {len(Xd_test)}")
-    print("Testing...\n")
+    # print(f"\n# of test observations: {len(Xd_test)}")
+    # print("Testing...\n")
 
     correct = 0
     total = 0
@@ -56,16 +56,7 @@ def naive(weights):
         for num in set(y):
             accumulator = 1
             for attribute_value in range(len(testing_now)):
-                try:
-                    accumulator = accumulator * (probabilities[num][attribute_value][testing_now[attribute_value]]**weights[attribute_value])
-                except:
-                    print(num)
-                    print(attribute_value)
-                    print(testing_now)
-                    print(testing_now[attribute_value])
-                    print(probabilities[num][attribute_value])
-                    sys.exit()
-                    # print(probabilities[num][attribute_value][testing_now[attribute_value]])
+                accumulator = accumulator * (probabilities[num][attribute_value][testing_now[attribute_value]]**weights[attribute_value])
             accumulator = accumulator * (num_observations[num] / training_num_observations)
             probs.append(accumulator)
         prediction = probs.index(max(probs))
@@ -73,12 +64,11 @@ def naive(weights):
             correct += 1
         total += 1
         confusion_matrix[y_test[i],prediction] = confusion_matrix[y_test[i],prediction] + 1
-        print("i:", i, "Prediction: ", prediction, "Actual: ", y_test[i], "Correct: ", prediction == y_test[i])
+        # print("i:", i, "Prediction: ", prediction, "Actual: ", y_test[i], "Correct: ", prediction == y_test[i])
 
-    print("\nTesting accuracy", correct/total * 100, "%")
-    print("Confusion matrix: ")
-    print(confusion_matrix)
-    print()
+    # print("\nTesting accuracy", correct/total * 100, "%")
+
+    return correct/total * 100
 
 
 
