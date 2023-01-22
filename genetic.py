@@ -1,6 +1,13 @@
 # Tanmai Kalisipudi & Griff Boehnlein
 # 1/23/23
 
+# issues to fix: 
+
+# 1. clones were too high
+# 2. make sure that the population is being updated correctly
+# 3. change so that the child is not randomly flip flopped but is an avergae of the two instead
+
+
 from naive import naive
 from random import random, choice
 import sys
