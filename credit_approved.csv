@@ -1,3 +1,4 @@
+Gender,Age,Debt,Married,BankCustomer,Industry,Ethnicity,YearsEmployed,PriorDefault,Employed,CreditScore,DriversLicense,Citizen,Income,Approved
 1,30.83,0,1,1,1,1,1.25,1,1,1,0,1,0,1
 0,58.67,4.46,1,1,2,2,3.04,1,1,6,0,1,560,1
 0,24.5,0.5,1,1,2,2,1.5,1,0,0,0,1,824,1
