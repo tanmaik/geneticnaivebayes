@@ -7,7 +7,7 @@
 # 2. make sure that the population is being updated correctly
 # 3. change so that the child is not randomly flip flopped but is an avergae of the two instead
 
-
+import time
 from naive import naive
 from random import random, choice
 import sys
@@ -15,11 +15,11 @@ from tqdm import tqdm
 
 
 POPULATION_SIZE = 100
-NUM_CLONES =0
+NUM_CLONES = 5
 MUTATION_RATE = .2
 TOURNAMENT_SIZE = 20
 TOURNAMENT_WIN_PROBABILITY = .75
-NUM_GENERATIONS = 100
+NUM_GENERATIONS = 1
 
 # Functions needed: 
 
@@ -30,6 +30,10 @@ NUM_GENERATIONS = 100
 # breed(mom, dad)
 
 
+print(time.perf_counter())
+print(naive([1 for x in range(14)]))
+print(time.perf_counter())
+sys.exit()
 def fitness(strategy):
     return naive(strategy)
 
@@ -98,8 +102,9 @@ def create_child(current_population):
 
 popZero = init_population()
 popCurrent = popZero
-
-for x in range(NUM_GENERATIONS):
+print(popCurrent)
+# for x in range(NUM_GENERATIONS):
+for x in range(2):
     newPop = []
     rankedPop = rank_population(popCurrent)
     for clone in range(NUM_CLONES):
@@ -108,7 +113,10 @@ for x in range(NUM_GENERATIONS):
         child = create_child(rankedPop)
         if child not in newPop:
             newPop.append(child)
-        # print(newPop)
+        print(newPop)
+    sys.exit()
+    # print(popCurrent)
+    # print(newPop)
     popCurrent = newPop.copy()
     newPop = []
     print("Generation " + str(x) + " complete")
