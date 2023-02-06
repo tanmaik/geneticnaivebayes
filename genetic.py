@@ -14,8 +14,8 @@ import sys
 from tqdm import tqdm
 
 
-POPULATION_SIZE = 100
-NUM_CLONES = 5
+POPULATION_SIZE = 50
+NUM_CLONES = 3
 MUTATION_RATE = .2
 TOURNAMENT_SIZE = 20
 TOURNAMENT_WIN_PROBABILITY = .75
@@ -30,10 +30,6 @@ NUM_GENERATIONS = 1
 # breed(mom, dad)
 
 
-print(time.perf_counter())
-print(naive([1 for x in range(14)]))
-print(time.perf_counter())
-sys.exit()
 def fitness(strategy):
     return naive(strategy)
 
@@ -113,10 +109,6 @@ for x in range(2):
         child = create_child(rankedPop)
         if child not in newPop:
             newPop.append(child)
-        print(newPop)
-    sys.exit()
-    # print(popCurrent)
-    # print(newPop)
     popCurrent = newPop.copy()
     newPop = []
     print("Generation " + str(x) + " complete")

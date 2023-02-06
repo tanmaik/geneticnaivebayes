@@ -5,8 +5,8 @@ import sys
 
 
 def naive(weights):
-    X = np.loadtxt(open("credit_approved_headings_weka.csv", "rb"), delimiter=",", usecols=range(14), skiprows=1, dtype=int)
-    y = np.loadtxt(open("credit_approved_headings_weka.csv", "rb"), delimiter=",", usecols=range(14,15), skiprows=1, dtype=int)
+    X = np.loadtxt(open("final_dataset_genetic.csv", "rb"), delimiter=",", usecols=range(14), skiprows=1, dtype=int)
+    y = np.loadtxt(open("final_dataset_genetic.csv", "rb"), delimiter=",", usecols=range(14,15), skiprows=1, dtype=int)
 
     Xd_train, Xd_test, y_train, y_test = train_test_split(X, y, random_state = 0, stratify = y, test_size=0.3)
 
